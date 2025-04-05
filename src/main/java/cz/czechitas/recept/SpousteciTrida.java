@@ -44,12 +44,50 @@ public class SpousteciTrida {
     prasekDoPeciva = new PrasekDoPeciva("prasekDoPeciva");
 
     //---------------------------------------------------------------------
-
-    // TODO: Sem napiste recept na bublaninu
     // Pouzivejte napovidani v editoru.
     // Vyskakuje samo nebo pomoci Ctrl+Mezernik
 
-    cervenaMiska.nalozSiJedenKus(vajicka);
-  }
+    System.out.println("Zaciname pripravovat bublaninu");
 
+    // cervena miska
+    for (int i = 0; i < 4; i++) {
+      cervenaMiska.nalozSiJedenKus(vajicka);
+    }
+
+    cervenaMiska.nalozSiCelyObsah(pytlikCukru);
+    mixer.zamichej(cervenaMiska);
+    cervenaMiska.nalozSiCelyObsah(maslo125g);
+    mixer.zamichej(cervenaMiska);
+
+    // zluta miska
+    kuchynskaVaha.vynulujSeS(zlutaMiska);
+    int hmostnostMouky = 0;
+    while (hmostnostMouky != 250) {
+      if (hmostnostMouky < 250) {
+        zlutaMiska.nalozSiTrochu(pytlikMouky);
+      } else {
+        zlutaMiska.vylozSiTrochu();
+      }
+      hmostnostMouky = kuchynskaVaha.zjistiHmotnost(zlutaMiska);
+    }
+
+    // cervena miska
+    cervenaMiska.nalozSiObsahJineMisky(zlutaMiska);
+    cervenaMiska.nalozSiCelyObsah(prasekDoPeciva);
+    mixer.zamichej(cervenaMiska);
+
+    // plech
+    plech.preberSiObsah(cervenaMiska);
+    for (int i = 0; i < 50; i++) {
+      plech.posypSeKusem(ovoce);
+    }
+
+    // trouba
+    trouba.zapniSe(180);
+    trouba.nechejPect(5);
+    trouba.vlozSiDovnitr(plech);
+    trouba.nechejPect(25);
+    trouba.vypniSe();
+    trouba.vyndejObsahVen();
+  }
 }
